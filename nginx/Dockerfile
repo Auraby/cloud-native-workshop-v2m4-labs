@@ -8,4 +8,5 @@ COPY default.conf /etc/nginx/conf.d/default.conf
 EXPOSE 8081
 # comment user directive as master process is run as user in OpenShift anyhow
 RUN sed -i.bak 's/^user/#user/' /etc/nginx/nginx.conf
-RUN apt install nano
+RUN ["apt-get", "update"]
+RUN ["apt-get", "-y", "install", "nano"]
