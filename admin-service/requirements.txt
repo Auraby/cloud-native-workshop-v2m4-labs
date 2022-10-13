@@ -1,0 +1,12 @@
+# RESTFUL/Webservices
+werkzeug
+wheel 
+flask
+flask_cors
+flask-restx
+requests
+
+# Flask env
+python-dotenv
+
+# Openshift
