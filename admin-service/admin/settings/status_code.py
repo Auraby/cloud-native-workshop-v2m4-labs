@@ -1,0 +1,6 @@
+"""OK Responses"""
+RESPONSE_SUCCEED = 200
+
+"""Error Responses"""
+BAD_REQUEST = 400
+INTERNAL_SERVER_ERROR = 500

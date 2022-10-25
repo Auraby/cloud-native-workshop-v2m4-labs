@@ -6,6 +6,15 @@ from admin import VERSION, api
 
 catalog_manager_ns = api.namespace(f'{VERSION}/Scrape', description="To manage catalog items")
 
-class CatalogManagerApi():
-    def __init__(self) -> None:
-        pass
+@catalog_manager_ns.route('')
+class CatalogManagerApi(CatalogManager,Resource):
+    def __init__(self,api) -> None:
+        super().__init__()
+        self.api = api
+
+    def get(self):
+        return {"message": "OK"}, 200
+
+    @catalog_manager_ns.response(200, 'Successfully added to database')
+    def post(self):
+        return {"message": "OK"}, 200
