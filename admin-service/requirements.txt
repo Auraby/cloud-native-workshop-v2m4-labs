@@ -6,6 +6,7 @@ flask_cors
 flask-restx
 requests
 Flask-SQLAlchemy
+greenlet==0.4.16
 
 # Flask env
 python-dotenv

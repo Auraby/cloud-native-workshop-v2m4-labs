@@ -1,14 +1,13 @@
-FROM tiangolo/meinheld-gunicorn-flask:python3.6
+FROM tiangolo/meinheld-gunicorn-flask:python3.9
 
 ENV APP /app
 ENV MODULE_NAME admin.main
 
 # Edit the Port
-ENV PORT 5081
+ENV PORT 5000
 ENV LISTEN_PORT $PORT
 
 # To set up the enviroment with the AWS DynamoDB
-ENV AWS_REGION ap-southeast-1
 ENV RUNTIME DOCKER
 
 # Create the directory and instruct Docker to operate
@@ -22,4 +21,5 @@ EXPOSE $PORT
 COPY . $APP
 
 # Install Python dependencies
+RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
