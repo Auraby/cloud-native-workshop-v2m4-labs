@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% include 'header.html' %}
+  {% include 'navbar.html' %}
+</head>
+
+<body>
+<div class="container-fluid">
+  <div class="row content">
+        <br>
+        <div class="col-sm-9">
+            <h3>Add a new item to the coolstore catalog</h3>
+        <form id="inputForm" method="post" action="{{url_for('create.home')}}">
+            <div class="form-group">
+            <label for="inputArea">Item Name</label>
+            <textarea class="form-control" id="inputArea" rows="1" name="inputArea"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Classify</button>
+        </form>       
+        </div>
+
+        <br>
+        <br>
+
+        <div class="row">
+            <div class="col-sm-3">
+                <h3>Connection check with service in VM</h3>
+                <form method="get" action="{{ url_for('create.check_connection_vm') }}">
+                    <button type="submit">Check connection</button>
+                </form>
+                <!-- <h3>Result:</h3>
+                <table>
+                {% for result in articleLabel %}
+                    <tr>      
+                    <td>{{ result }}</td>
+                    </tr>
+                {% endfor %}
+                </table> -->
+            </div>
+            <div class="col-sm-3">
+                <h3>Connection status:</h3>
+                {% if responseMsg %}
+                    <p>{{ responseMsg }}</p>
+                {% else %}
+                    <p>...</p>
+                {% endif %}
+            </div>
+        
+        </div>
+  </div>
+  
+</div>
+
+</body>
+</html>
