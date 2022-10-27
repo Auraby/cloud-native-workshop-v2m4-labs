@@ -18,6 +18,7 @@ class HealthStatusApi(HealthStatus,Resource):
     @health_ns.response(RESPONSE_SUCCEED,"Connection to db established")
     def get(self):
         """GET request to check container health"""
+        health_ns.logger.info("Received health check request")
         return self.check_connections()
 
     def check_connections(self) -> Dict[str,str]:
