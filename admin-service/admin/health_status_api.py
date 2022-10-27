@@ -3,6 +3,7 @@ from admin.health_status import HealthStatus
 from admin import api, VERSION
 from admin.settings.status_code import RESPONSE_SUCCEED, BAD_REQUEST
 from typing import Dict
+from admin.logger import Logger
 
 health_ns = api.namespace("Health", description='Health check API for application')
 
@@ -14,11 +15,14 @@ class HealthStatusApi(HealthStatus,Resource):
     def __init__(self,api) -> None:
         super().__init__()
         self.api = api
+        self._logger = Logger("Admin-Service-VM")
+        self.logname = self.__class__.__name__
 
     @health_ns.response(RESPONSE_SUCCEED,"Connection to db established")
     def get(self):
         """GET request to check container health"""
-        health_ns.logger.info("Received health check request")
+        msg = f"[{__class__.__name__}.health_get] Health check request received."
+        self._logger.info(msg)
         return self.check_connections()
 
     def check_connections(self) -> Dict[str,str]:
